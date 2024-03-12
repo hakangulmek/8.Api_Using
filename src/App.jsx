@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://localhost:5173/";
 
 function App() {
   const getAllUsers = async () => {
@@ -20,16 +18,21 @@ function App() {
     const response = await axios.post(`${BASE_URL}/users`, newUsers);
     console.log("response", response.data);
   };
+  const updateUser = async (userId, updatedUser) => {
+    await axios.put(`${BASE_URL}/users/${userId}`, updatedUser);
+  };
 
   useEffect(() => {
     // getAllUsers();
     //getUserById(1);
-
-    const newUsers = {
-      username: "Yarin23",
-      password: "hka1",
-    };
-    createUser(newUsers);
+    //const newUsers = {
+    //username: "Yarin23",
+    //password: "hka1",};
+    //createUser(newUsers);
+    updateUser("1", {
+      username: "Yakup2323",
+      password: "5565",
+    });
   }, []);
 
   return <div></div>;
